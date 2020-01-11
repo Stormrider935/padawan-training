@@ -10,16 +10,18 @@
 fastq_ch = Channel.fromPath( params.fastq, checkIfExists: true)
                   .map { file -> tuple(file.baseName, file) }
                   .view()
+// split channel to get used by input_check and nanoplot
+fastq_ch.into {input_check_ch; nanoplot_ch }
 
 
 //xxxxxxxxxxxxxx//
 //***valid input?***//
 //xxxxxxxxxxxxxx//
 
-process input_check{
+process input_check {
 
     input:
-    tuple val(name), file(fastq) from fastq_ch
+    tuple val(name), file(fastq) from input_check_ch
 
     output:
     tuple val(name), file("${name}.fastq") into filterfastq_ch
@@ -30,14 +32,46 @@ process input_check{
             *.gz) 
                 zcat ${fastq} > ${name}.fastq
                 ;;
+
             *.fastq)
                 ;;
+                
             *)
                 echo "file format not supported...(.fastq .gz is supported)"
                 exit 1
         esac
     """
 }
+
+
+
+//xxxxxxxxxxxxxx//
+//***nanoplot***//
+//xxxxxxxxxxxxxx//
+process nanoplot {
+
+    publishDir 'results/nanoplot_results'
+
+    input:
+      tuple val(name), file(fastqnp) from nanoplot_ch
+    output:
+      tuple val(name), file("*.html")
+      tuple val(name), file("*.png")
+      tuple val(name), file("*.pdf")
+      tuple val(name), file("${name}_read_quality.txt")
+      
+    script:
+      """
+      NanoPlot --fastq ${fastqnp} --title ${name} --color darkslategrey --N50 --plots hex --loglength -f png --store
+      NanoPlot --pickle NanoPlot-data.pickle --title ${name} --color darkslategrey --N50 --plots hex --loglength -f pdf
+      mv Nano*.html ${name}_read_quality_report.html
+      mv NanoStats.txt ${name}_read_quality.txt
+      """
+}
+
+
+
+
 
 //xxxxxxxxxxxxxx//
 //***filter short fastq***//
@@ -54,11 +88,11 @@ process filterfastq {
     tuple val(name), file(filterfastq) from filterfastq_ch
 
     output:
-    tuple val(name), file("${name}.fastq") into assembly_ch
+    tuple val(name), file("${name}_filtered_tmp.fastq") into assembly_ch
     
     script:
     """
-    filtlong --min_length 2000 ${filterfastq} > ${name}_filtered.fastq
+    filtlong --min_length 2000 ${filterfastq} > ${name}_filtered_tmp.fastq
     """
 }
 
@@ -80,12 +114,10 @@ if (!assembly.exists()) {
     output:
     tuple val(name), file("${name}.fasta") into sourmash_analysis_ch
     tuple val(name), file(fastq), file("${name}.gfa"), file ("${name}.gv")
-    // hier evtl nur .fasta in den channel sourmash_analysis_ch
-    //der rest in publish dir
-    script:
 
+    script:
     """
-    flye --nano-raw ${fastq} --genome-size 5m --threads 4 -o Assembly_results
+    flye --nano-raw ${fastq} --genome-size 100000 --threads 4 -o Assembly_results
     mv Assembly_results/assembly.fasta ${name}.fasta
     mv Assembly_results/assembly_graph.gfa ${name}.gfa
     mv Assembly_results/assembly_graph.gv ${name}.gv
@@ -142,15 +174,5 @@ process sourmashmg {
     """
     sourmash compute --scaled 10000 -k 31 ${assembly} -o ${name}.sig 
     sourmash gather -k 31 ${name}.sig ${databasemg} -o ${name}_sourmashresult.txt
-
-
-
     """
-
-
-
-
-
-
-
         }

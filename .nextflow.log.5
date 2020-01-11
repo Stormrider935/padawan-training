@@ -1,0 +1,44 @@
+Jan-11 22:33:10.808 [main] DEBUG nextflow.cli.Launcher - $> nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+Jan-11 22:33:10.890 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 19.10.0
+Jan-11 22:33:10.900 [main] INFO  nextflow.cli.CmdRun - Launching `training.nf` [pedantic_darwin] - revision: a4598574ad
+Jan-11 22:33:10.919 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/mike/bioinformatics/padawan-training/nextflow.config
+Jan-11 22:33:10.920 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/mike/bioinformatics/padawan-training/nextflow.config
+Jan-11 22:33:10.945 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jan-11 22:33:11.298 [main] DEBUG nextflow.extension.OperatorEx - Dataflow extension methods: branch,buffer,chain,choice,collate,collect,collectFile,combine,concat,count,countBy,countFasta,countFastq,countLines,countText,cross,distinct,filter,first,flatMap,flatten,fork,groupBy,groupTuple,ifEmpty,into,join,last,map,max,mean,merge,min,mix,phase,print,println,randomSample,reduce,separate,set,splitCsv,splitFasta,splitFastq,splitText,spread,subscribe,sum,take,tap,toDouble,toFloat,toInteger,toList,toLong,toSortedList,transpose,unique,until,view
+Jan-11 22:33:11.305 [main] DEBUG nextflow.Session - Session uuid: 75b0d6e6-dda5-4e39-845a-3ebb62607072
+Jan-11 22:33:11.305 [main] DEBUG nextflow.Session - Run name: pedantic_darwin
+Jan-11 22:33:11.306 [main] DEBUG nextflow.Session - Executor pool size: 16
+Jan-11 22:33:11.340 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 19.10.0 build 5170
+  Created: 21-10-2019 15:07 UTC (17:07 CEST)
+  System: Linux 5.0.0-37-generic
+  Runtime: Groovy 2.5.8 on OpenJDK 64-Bit Server VM 11.0.5+10-post-Ubuntu-0ubuntu1.118.04
+  Encoding: UTF-8 (UTF-8)
+  Process: 10347@mike-ONE [127.0.1.1]
+  CPUs: 16 - Mem: 15.7 GB (9.3 GB) - Swap: 2 GB (2 GB)
+Jan-11 22:33:11.362 [main] DEBUG nextflow.Session - Work-dir: /home/mike/bioinformatics/padawan-training/work [ext2/ext3]
+Jan-11 22:33:11.362 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/mike/bioinformatics/padawan-training/bin
+Jan-11 22:33:11.375 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Jan-11 22:33:11.377 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jan-11 22:33:11.519 [main] DEBUG nextflow.Session - Session start invoked
+Jan-11 22:33:11.751 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jan-11 22:33:11.769 [main] DEBUG nextflow.Session - Session aborted -- Cause: No signature of method: static nextflow.Channel.value() is applicable for argument types: (LinkedHashMap, String) values: [[checkIfExists:true], /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq]
+Possible solutions: value(), value(java.lang.Object), wait(), any()
+Jan-11 22:33:11.780 [main] ERROR nextflow.cli.Launcher - @unknown
+groovy.lang.MissingMethodException: No signature of method: static nextflow.Channel.value() is applicable for argument types: (LinkedHashMap, String) values: [[checkIfExists:true], /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq]
+Possible solutions: value(), value(java.lang.Object), wait(), any()
+	at groovy.lang.MetaClassImpl.invokeStaticMissingMethod(MetaClassImpl.java:1525)
+	at groovy.lang.MetaClassImpl.invokeStaticMethod(MetaClassImpl.java:1511)
+	at org.codehaus.groovy.runtime.callsite.StaticMetaClassSite.call(StaticMetaClassSite.java:50)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:135)
+	at Script_7e51b608.runScript(Script_7e51b608:10)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:152)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:182)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:217)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:218)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:126)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:257)
+	at nextflow.cli.Launcher.run(Launcher.groovy:457)
+	at nextflow.cli.Launcher.main(Launcher.groovy:639)

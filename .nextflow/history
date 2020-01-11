@@ -1,0 +1,19 @@
+2020-01-11 22:12:03	-	compassionate_shockley	-	76302d275957db3a1094e5018b249f7c	adfd8835-8304-427f-a1ba-262d2b7905cb	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/
+2020-01-11 22:12:44	-	compassionate_dalembert	-	246730d89d394e1ffccd99a738a200f4	b79468b0-ad0d-4d45-bcbb-c0d4c2015186	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/
+2020-01-11 22:14:42	-	curious_carlsson	-	1dbeb7c222eed5ab4ec4f9667bf454e1	5ddd5b56-f388-444e-b9af-ce927faf3f90	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/
+2020-01-11 22:14:59	1.5s	deadly_kimura	ERR	39fa828266c52e17b07c88c5b7b16bb5	f16d7d94-b63a-40ca-9cc9-b851d85907c5	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/
+2020-01-11 22:15:39	-	desperate_yonath	-	1dbeb7c222eed5ab4ec4f9667bf454e1	b80a9674-6708-46b7-9df7-9efb52582f19	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:15:52	1.5s	maniac_tesla	ERR	39fa828266c52e17b07c88c5b7b16bb5	c05f2ddd-ddcc-4419-bca5-e7997b9b7180	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:24:05	11.2s	intergalactic_northcutt	ERR	3d4dea8e69493ac11d3c0bd4af74f2ef	db1607ae-70f2-4745-95b5-8625ebcfebad	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:25:29	-	admiring_roentgen	-	67b9a5a6260f985ffa40fc57f0091b12	518cfb4f-10e5-476c-8fa7-24d5a4b64f73	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:25:46	-	lonely_turing	-	d53552a8a518664c81224aff1ae2605d	fae696f8-e513-4546-b9e0-03406b75f245	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:26:23	-	extravagant_plateau	-	cc7ad420c8cefdd1eb3cc03892fd16c5	56afcb0d-1d4b-4242-9d41-2d4c6a023d69	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:27:19	-	sharp_tesla	-	116ffdb8e9affa2fdf9fa70f005f9e15	6576e3c2-5fcc-44e0-a48f-cc69ef594970	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:28:35	-	insane_montalcini	-	d90b94c4ea2cdbff7f237c1947dad399	96eea9d1-9127-4bcc-a4b5-a877d8e57e64	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:32:04	-	nauseous_stonebraker	-	764fd76292cf421063326fec927dda95	fec783ae-da2b-4cf1-b819-6af51b4f189b	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:33:11	-	pedantic_darwin	-	a4598574ad89dfc0f15a8d0aa5f58040	75b0d6e6-dda5-4e39-845a-3ebb62607072	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:45:21	-	hopeful_darwin	-	78547b013811b92242ff17ba54e25ec6	f4206254-85b3-4e93-92ac-ed17d6df27a2	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:46:14	1.6s	wise_murdock	ERR	f01331e8a96cac0160bdf2e2d7fae565	0bbc153f-33a9-417a-af05-90fcce8e0316	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:47:46	-	fervent_stallman	-	030878d8c070abd1c17052c2c30c451e	94ddb9c6-6e5e-4a64-be25-ac0220516f3b	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:49:31	-	backstabbing_edison	-	0f1fa8d2d62bd6ea280727be25c460b0	a0b8cdb2-3124-4b36-b206-39ad37eff2d6	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
+2020-01-11 22:52:01	3m 24s	friendly_gilbert	OK	840252ddf8d743b56ea000419034c5dd	ffb040ef-4671-4e84-a5e8-8367f407a608	nextflow run training.nf --fastq /home/mike/bioinformatics/test_files/pacbio_fastq/pacbio.fastq
