@@ -21,7 +21,7 @@ if (params.help) { exit 0, helpMSG() }
 //xxxxxxxxxxxxxx//
 
 
-//für inputcheck: ich muss schauen das der gewünschte input ture ist... aber die anderen inputmöglichkeiten müssen auf false gesetzt werden!
+//für inputcheck: ich muss schauen das der gewünschte input true ist... aber die anderen inputmöglichkeiten müssen auf false gesetzt werden!
 
 if (params.fastq && params.genomesize && !params.fasta){    
     fastq_ch = Channel  .fromPath( params.fastq, checkIfExists: true)
@@ -29,7 +29,7 @@ if (params.fastq && params.genomesize && !params.fasta){
                         .view()
 
 
-            // split channel to get used by input_check and nanoplot
+// split channel to get used by input_check and nanoplot
             fastq_ch.into {input_check_ch; nanoplot_ch }
 }
 
@@ -43,17 +43,13 @@ fasta_ch = Channel.fromPath( params.fasta, checkIfExists: true)
                   .view()
 
 
-            fasta_ch.into {sourmash_analysis_ch; xx}
+            fasta_ch.set {sourmash_analysis_ch}
 }
 
-
-
-    if (!params.fasta){
-
-        //xxxxxxxxxxxxxx//
-        //***valid input?***//
-        //xxxxxxxxxxxxxx//
-
+//xxxxxxxxxxxxxx//
+//***valid input?***//
+//xxxxxxxxxxxxxx//
+if (!params.fasta){
 
 
         //when inputfile is named: foo.fasta.gz     i get some weird doublenaming like foo.fasta.fasta? because ${name} = foo.fasta
@@ -85,9 +81,9 @@ fasta_ch = Channel.fromPath( params.fasta, checkIfExists: true)
 
 
 
-        //xxxxxxxxxxxxxx//
-        //***nanoplot***//
-        //xxxxxxxxxxxxxx//
+//xxxxxxxxxxxxxx//
+//***nanoplot***//
+//xxxxxxxxxxxxxx//
         process nanoplot {
 
             publishDir 'results/nanoplot_results'
@@ -111,33 +107,37 @@ fasta_ch = Channel.fromPath( params.fasta, checkIfExists: true)
 
 
 
-        //xxxxxxxxxxxxxx//
-        //***filter short fastq***//
-        //xxxxxxxxxxxxxx//
+//xxxxxxxxxxxxxx//
+//***filter short fastq***//
+//xxxxxxxxxxxxxx//
 
-        // filterfastq should move into the if statement
-        if (params.nofilter)
-        process filtlong {
 
-            publishDir 'results/filter_results/'
-            
-            input:
-            tuple val(name), file(filterfastq) from filterfastq_ch
+        if (!params.nofilter) {
+                process filtlong {
 
-            output:
-            tuple val(name), file("${name}_filtered.fastq") into assembly_ch
-            
-            script:
-            """
-            filtlong --min_length 2000 ${filterfastq} > ${name}_filtered.fastq
-            """
+                    publishDir 'results/filter_results/'
+                    
+                    input:
+                    tuple val(name), file(filterfastq) from filterfastq_ch
+
+                    output:
+                    tuple val(name), file("${name}_filtered.fastq") into assembly_ch
+                    
+                    script:
+                    """
+                    filtlong --min_length 2000 ${filterfastq} > ${name}_filtered.fastq
+                    """
+        }
+        }
+// set output from channel x as input of channel y (.set)
+        else{filterfastq_ch.set {assembly_ch}
+
         }
 
 
-
-        //xxxxxxxxxxxxxx//
-        //***Assembly***//
-        //xxxxxxxxxxxxxx//
+//xxxxxxxxxxxxxx//
+//***Assembly***//
+//xxxxxxxxxxxxxx//
 
 
         assembly = file("results/assembly_results/")
